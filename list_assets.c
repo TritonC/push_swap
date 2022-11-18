@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:16:09 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/16 22:24:36 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:19:02 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ t_dlist	*create_node(int n)
 	return (element);
 }
 
-int	list_size(t_dlist *list)
+int	list_size(t_dlist **list)
 {
 	int		count;
 	int		val;
 	t_dlist	*next;
 
 	count = 1;
-	val = list->value;
-	next = list->next;
+	val = (*list)->value;
+	next = (*list)->next;
 	while (val != next->value)
 	{
 		next = next->next;
@@ -43,12 +43,36 @@ int	list_size(t_dlist *list)
 	return (count);
 }
 
+void	get_values(t_dlist *list, t_value *value)
+{
+	int		count;
+	int		first;
+	t_dlist	*temp;
+
+	temp = list;
+	count = 1;
+	first = list->value;
+	while (1)
+	{
+		if (list->value < value->min)
+			value->min = list->value;
+		if (list->value > value->max)
+			value->max = list->value;
+		if (first == list->next->value)
+			break ;
+		list = list->next;
+		count++;
+	}
+	list = temp;
+	value->lenght = count;
+}
+
 t_dlist	*last_node(t_dlist *list)
 {
 	t_dlist	*last_node;
 	int		lst_size;
 
-	lst_size = list_size(list) - 1;
+	lst_size = list_size(&list) - 1;
 	last_node = list;
 	while (lst_size--)
 		last_node = last_node->next;
@@ -83,7 +107,7 @@ void	print_stack(t_dlist *list, t_dlist *list2)
 	value2 = list2->value;
 	next = list->next;
 	temp = list2->next;
-	printf("%s\t\t%s\n", "list 1", "list 2");
+	printf("list 1\t\tlist 2\n");
 	printf("%d\t\t%d\n", value, value2);
 	while (value != next->value && value2 != temp->value)
 	{
