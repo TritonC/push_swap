@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:09:51 by mluis-fu          #+#    #+#             */
-/*   Updated: 2022/11/17 11:57:36 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:41:42 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,17 @@ int	main(int argc, char **argv)
 	stack_fill(&testing, argv);
 	stack_fill(&stack_a, argv);
 	init(&stack_a, &value);
-//	testing = pre_sort(testing, lenght);
-//	testing = bubble_sort(testing, lenght);
-//	testing = insertion_sort(testing, lenght);
-//	print_stack(stack_a, testing);
-	printf("min = %d \t\tmax = %d\t\tlenght=%d\n", value.min, value.max, value.lenght);
+	print_stack(stack_a, testing);
+	printf("min = %d \t\tmax = %d\t\tlenght = %d\n",
+		value.min, value.max, value.lenght);
+	if (is_sort(stack_a, value.min))
+	{
+		printf ("list is sorted\n");
+		return (0);
+	}
+	else
+	{
+		printf("list is not sorted\n");
+		return (0);
+	}
 }

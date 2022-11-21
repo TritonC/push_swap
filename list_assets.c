@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:16:09 by marvin            #+#    #+#             */
-/*   Updated: 2022/11/17 12:19:02 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:52:43 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	print_stack(t_dlist *list, t_dlist *list2)
 	value2 = list2->value;
 	next = list->next;
 	temp = list2->next;
-	printf("list 1\t\tlist 2\n");
-	printf("%d\t\t%d\n", value, value2);
+	ft_printf("list 1\t\tlist 2\n");
+	ft_printf("%d\t\t%d\n", value, value2);
 	while (value != next->value && value2 != temp->value)
 	{
 		printf("%d\t\t%d\n", next->value, temp->value);
