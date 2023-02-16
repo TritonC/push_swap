@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:26:31 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/16 18:24:51 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:56:12 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 	else
 		group_sort(&data);
 		//radix_binary_sort(&data);
-    print_id(data.stack_b);
 	free_stack(&data);
 	return (1);
 }

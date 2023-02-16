@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/16 18:24:46 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:07:24 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,20 @@ void	group_sort(t_pushswap *data)
 	// tmp = data->stack_a;
 	while (!is_sorted(data->stack_a) && data->stack_a)
 	{
-		while (group_check(data->stack_a, id))
+		while (group_check(data->stack_a, id) && ft_lstsize(data->stack_a) != 3)
 		{
-			if (((t_nbr *)data->stack_a->content)->group_id == id)
+			if (((t_nbr *)data->stack_a->content)->group_id == id + 1)
 			{
 				stack_operation(data, OP_PB, 1);
 				stack_operation(data, OP_RB, 1);
 			}
-			if (((t_nbr *)data->stack_a->content)->group_id == id + 1)
+			if (((t_nbr *)data->stack_a->content)->group_id == id)
 				stack_operation(data, OP_PB, 1);
 			else
 				stack_operation(data, OP_RA, 1);
 		}
+		if (ft_lstsize(data->stack_a) == 3)
+			small_sort(data);
 		id++;
 	}
 }
