@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/16 16:02:09 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/20 18:13:03 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	index_stack(t_pushswap *data)
 	t_list	*min_lst;
 
 	i = 0;
-	j = 0;
+	j = 1;
 	while (i < data->length)
 	{
 		min_lst = NULL;
@@ -86,7 +86,7 @@ void	read_stack(t_pushswap *data, int argc, char **argv)
 			exit_error("Error");
 		nbr->nbr = tmp;
 		nbr->idx = -1;
-		nbr->group_id = -1;
+		nbr->group_id = 0;
 		ft_lstadd_back(&data->stack_a, ft_lstnew(nbr));
 		i++;
 	}

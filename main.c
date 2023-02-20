@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:26:31 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/16 18:56:12 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:32:51 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	if (data.length <= 5)
 		small_sort(&data);
 	else
-		group_sort(&data);
+		this_shit_works(&data);
 		//radix_binary_sort(&data);
 	free_stack(&data);
 	return (1);

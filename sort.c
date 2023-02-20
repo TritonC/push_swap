@@ -11,7 +11,7 @@ static void	stack_push_bit(t_pushswap *data, int bit)
 	{
 		if (((((t_nbr *)lst->content)->idx >> bit) & 1) == 1)
 			stack_operation(data, OP_RA, 1);
-		else	
+		else
 			stack_operation(data, OP_PB, 1);
 		lst = data->stack_a;
 		i++;

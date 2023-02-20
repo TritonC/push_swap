@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(lldb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/push_swap",
+            "args": [1 2 13 22 95 98 85 72 25 53 86 78 52 57 46 14 4 96 44 35 50 59 26 89 84 33 63 67 91 62 61 49 20 5 94 41 54 90 42 47 81 73 38 11 37 74 17 19 43 12 65 56 75 69 40 92 51 82 8 58 70 29 28 27 15 45 3 7 64 18 60 71 66 30 88 6 24 34 21 36 87 23 80 68 55 97 77 99 32 93 83 39 79 16 31 100 48 9 76 10],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+
+    ]
+}
