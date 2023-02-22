@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/22 19:25:51 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:30:14 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ t_list	*best_move(t_list *stack)
 		best_b = ((t_nbr *)(head->content))->move.cost_b;
 		if (best_a < 0 && best_b < 0)
 			lower_cost = (best_a * -1) + best_b;
+		
 }
 
 void	cost_assign(t_pushswap *data)
