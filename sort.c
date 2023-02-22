@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
+/*   Updated: 2023/02/22 18:15:05 by mluis-fu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	stack_push_bit(t_pushswap *data, int bit)
@@ -41,7 +53,7 @@ void	radix_binary_sort(t_pushswap *data)
 	}
 }
 
-static void	sort_3(t_pushswap *data)
+void	sort_3(t_pushswap *data)
 {
 	if (((t_nbr *)data->stack_a->content)->idx == data->length - 1)
 		stack_operation(data, OP_RA, 1);

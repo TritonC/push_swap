@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/20 16:32:25 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:14:57 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,18 @@
 # define OP_RRB "rrb"
 # define OP_RRR "rrr"
 
+typedef struct s_move
+{
+	int	cost_a;
+	int	cost_b;
+}	t_move;
+
 typedef struct s_nbr
 {
-	int	nbr;
-	int	idx;
-	int	group_id;
+	int		nbr;
+	int		idx;
+	int		group_id;
+	t_move	move;
 }	t_nbr;
 
 typedef struct s_pushswap
@@ -61,6 +68,7 @@ void	stack_operation(t_pushswap *data, char *operation, int print_operation);
 void	radix_binary_sort(t_pushswap *data);
 void	small_sort(t_pushswap *data);
 void	print_id(t_list stack);
+void	sort_3(t_pushswap *data);
 void	this_shit_works(t_pushswap *data);
 
 int		is_sorted(t_list *lst);

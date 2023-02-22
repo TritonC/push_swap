@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/20 18:45:58 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:25:51 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		group_check(t_list *stack, int group_id)
 	t_list	*tmp;
 
 	tmp = stack;
-	while (tmp)
+	while (tmp && tmp->next)
 	{
 		if (((t_nbr *)(tmp->content))->group_id == group_id)
 			return (1);
@@ -50,12 +50,15 @@ int		group_check(t_list *stack, int group_id)
 void	group_sort(t_pushswap *data)
 {
 	int		id;
+	int		lst_size;
 
 	id = 1;
-	while (!is_sorted(data->stack_a) && data->stack_a)
+	lst_size = ft_lstsize(data->stack_b);
+	while (lst_size != 3)
 	{
-		while (group_check(data->stack_a, id) && data->stack_a)
+		while (group_check(data->stack_a, id) && lst_size != 3)
 		{
+			lst_size = ft_lstsize(data->stack_a);
 			if (((t_nbr *)data->stack_a->content)->group_id == id)
 				stack_operation(data, OP_PB, 1);
 			if (data->stack_a && ((t_nbr *)data->stack_a->content)->group_id == id + 1)
@@ -63,70 +66,106 @@ void	group_sort(t_pushswap *data)
 				stack_operation(data, OP_PB, 1);
 				stack_operation(data, OP_RB, 1);
 			}
-			else if (data->stack_a)
+			else
 				stack_operation(data, OP_RRA, 1);
 		}
 		id++;
 	}
+	sort_3(data);
 }
 
-int	index_value(t_list *stack, int id)
+int	get_lower_idx(t_list *stack_a, int idx_from_b)
 {
-	t_list	*tmp;
-	int		index_to_find;
+	int		idx_pos;
+	t_list	*head;
 
-	index_to_find = INT32_MIN;
-	tmp = stack;
-	while (tmp)
+	head = stack_a;
+	idx_pos = INT32_MAX;
+	while (head)
 	{
-		if (((t_nbr *)(tmp->content))->idx > index_to_find
-			&& ((t_nbr *)(tmp->content))->group_id == id)
-			index_to_find = ((t_nbr *)(tmp->content))->idx;
-		tmp = tmp->next;
+		if (((t_nbr *)(head->content))->idx > idx_from_b
+			&& ((t_nbr *)(head->content))->idx < idx_pos)
+			idx_pos = ((t_nbr *)(head->content))->idx;
+		head = head->next;
 	}
-	return (index_to_find);
+	if (idx_pos == INT32_MAX)
+		idx_pos = idx_from_b;
+	return (idx_pos);
 }
 
-int	idx_pos(t_list *stack, int idx_to_find)
+int	c_value(t_list *stack, int i)
 {
-	t_list	*tmp;
+	int	cost;
+
+	cost = i;
+	if (i > ft_lstsize(stack) / 2)
+		cost = i - ft_lstsize(stack);
+	return (cost);
+}
+
+t_list	*best_move(t_list *stack)
+{
+	int		best_a;
+	int		best_b;
+	int		lower_cost;
+	t_list	*head;
+
+	head = stack;
+	while (head)
+	{
+		best_a = ((t_nbr *)(head->content))->move.cost_a;
+		best_b = ((t_nbr *)(head->content))->move.cost_b;
+		if (best_a < 0 && best_b < 0)
+			lower_cost = (best_a * -1) + best_b;
+}
+
+void	cost_assign(t_pushswap *data)
+{
 	int		i;
+	int		j;
+	int		idx_pos;
+	t_list	*head_a;
+	t_list	*head_b;
 
-	tmp = stack;
-	i = 0;
-	while (tmp)
+	j = 0;
+	head_b = data->stack_b;
+	while (head_b)
 	{
-		if (((t_nbr *)tmp->content)->idx == idx_to_find)
-			return (i);
-		i++;
-		tmp = tmp->next;
+		i = 0;
+		head_a = data->stack_a;
+		idx_pos = get_lower_idx(data->stack_a,
+				((t_nbr *)(head_b->content))->idx);
+		while (head_a && ((t_nbr *)(head_a->content))->idx != idx_pos)
+		{
+			i++;
+			head_a = head_a->next;
+		}
+		((t_nbr *)(head_b->content))->move.cost_b = c_value(data->stack_b, j);
+		((t_nbr *)(head_b->content))->move.cost_a = c_value(data->stack_b, i);
+		head_b = head_b->next;
+		j++;
 	}
-	return (0);
 }
 
-void	empty_b(t_pushswap *data, int id)
+void	print_this(t_list *stack)
 {
-	int		middle_size;
-	int		idx_to_move;
 	int		idx;
-	int		top;
+	int		cost_a;
+	int		cost_b;
+	int		nbr_value;
+	t_list	*head;
 
-	while (group_check(data->stack_b, id))
+	head = stack;
+	while (head)
 	{
-		middle_size = ft_lstsize(data->stack_b) / 2;
-		idx_to_move = index_value(data->stack_b, id);
-		idx = idx_pos(data->stack_b, idx_to_move);
-		top = ft_lstsize(data->stack_b);
-		if (idx > middle_size)
-			while (idx++ != top)
-				stack_operation(data, OP_RRB, 1);
-		else
-			while (idx-- != 0)
-				stack_operation(data, OP_RB, 1);
-		stack_operation(data, OP_PA, 1);
+		cost_a = ((t_nbr *)(head->content))->move.cost_a;
+		cost_b = ((t_nbr *)(head->content))->move.cost_b;
+		nbr_value = ((t_nbr *)(head->content))->nbr;
+		idx = ((t_nbr *)(head->content))->idx;
+		printf("nbr | idx | cost_a | cost_b\n%d | %d | %d | %d\n", nbr_value, idx, cost_a, cost_b);
+		head = head->next;
 	}
 }
-
 
 void	this_shit_works(t_pushswap *data)
 {
@@ -141,11 +180,8 @@ void	this_shit_works(t_pushswap *data)
 	else
 		id = 7;
 	group_sort(data);
-	while (id > 0)
-	{
-		empty_b(data, id);
-		id--;
-	}
+	cost_assign(data);
+	print_this(data->stack_b);
 }
 /*
 void	final_step(t_pushswap *data)
