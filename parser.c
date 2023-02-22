@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/22 19:29:54 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:32:04 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	init_nbr(t_nbr *nbr)
 	nbr->group_id = 0;
 	nbr->move.cost_a = 0;
 	nbr->move.cost_b = 0;
+	nbr->cost = 0;
 }
 
 void	read_stack(t_pushswap *data, int argc, char **argv)

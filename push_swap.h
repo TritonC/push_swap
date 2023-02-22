@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/22 18:14:57 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:32:16 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_nbr
 	int		nbr;
 	int		idx;
 	int		group_id;
+	int		cost;
 	t_move	move;
 }	t_nbr;
 
