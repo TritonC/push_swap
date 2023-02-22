@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/22 19:30:14 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:36:16 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,24 @@ t_list	*best_move(t_list *stack)
 	t_list	*head;
 
 	head = stack;
+	lower_cost = INT32_MAX;
 	while (head)
 	{
 		best_a = ((t_nbr *)(head->content))->move.cost_a;
 		best_b = ((t_nbr *)(head->content))->move.cost_b;
 		if (best_a < 0 && best_b < 0)
-			lower_cost = (best_a * -1) + best_b;
-		
+			((t_nbr *)(head->content))->cost = (best_a * -1) + best_b;
+		else
+			((t_nbr *)(head->content))->cost = best_a + best_b;
+		head = head->next;
+	}
+	head = stack;
+	while (((t_nbr *)(head->content))->cost < lower_cost)
+	{
+		lower_cost = ((t_nbr *)(head->content))->cost;
+		head = head->next;
+	}
+	return (head);
 }
 
 void	cost_assign(t_pushswap *data)
