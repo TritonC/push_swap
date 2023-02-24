@@ -6,39 +6,18 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/22 19:36:16 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:34:37 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int direction_choose(t_list *stack, int length, int index_to_find)
+int	group_check(t_list *stack, int group_id)
 {
-	int		i;
 	t_list	*tmp;
-	int 	middle;
 
-	i = 0;
 	tmp = stack;
-	middle = length / 2;
 	while (tmp)
-	{
-		if (((t_nbr *)tmp->content)->idx != index_to_find)
-			i++;
-		tmp = tmp->next;
-	}
-	if (i < middle)
-		return (1);
-	else
-		return (2);
-}
-
-int		group_check(t_list *stack, int group_id)
-{
-	t_list	*tmp;
-
-	tmp = stack;
-	while (tmp && tmp->next)
 	{
 		if (((t_nbr *)(tmp->content))->group_id == group_id)
 			return (1);
@@ -58,19 +37,21 @@ void	group_sort(t_pushswap *data)
 	{
 		while (group_check(data->stack_a, id) && lst_size != 3)
 		{
-			lst_size = ft_lstsize(data->stack_a);
 			if (((t_nbr *)data->stack_a->content)->group_id == id)
 				stack_operation(data, OP_PB, 1);
-			if (data->stack_a && ((t_nbr *)data->stack_a->content)->group_id == id + 1)
+			if (data->stack_a && ((t_nbr *)data->stack_a->content)
+				->group_id == id + 1)
 			{
 				stack_operation(data, OP_PB, 1);
 				stack_operation(data, OP_RB, 1);
 			}
 			else
 				stack_operation(data, OP_RRA, 1);
+			lst_size = ft_lstsize(data->stack_a);
 		}
 		id++;
 	}
+	data->length = ft_lstsize(data->stack_a);
 	sort_3(data);
 }
 
@@ -103,34 +84,7 @@ int	c_value(t_list *stack, int i)
 	return (cost);
 }
 
-t_list	*best_move(t_list *stack)
-{
-	int		best_a;
-	int		best_b;
-	int		lower_cost;
-	t_list	*head;
-
-	head = stack;
-	lower_cost = INT32_MAX;
-	while (head)
-	{
-		best_a = ((t_nbr *)(head->content))->move.cost_a;
-		best_b = ((t_nbr *)(head->content))->move.cost_b;
-		if (best_a < 0 && best_b < 0)
-			((t_nbr *)(head->content))->cost = (best_a * -1) + best_b;
-		else
-			((t_nbr *)(head->content))->cost = best_a + best_b;
-		head = head->next;
-	}
-	head = stack;
-	while (((t_nbr *)(head->content))->cost < lower_cost)
-	{
-		lower_cost = ((t_nbr *)(head->content))->cost;
-		head = head->next;
-	}
-	return (head);
-}
-
+// function to mark the cost in A and B, for every node in the stack_b
 void	cost_assign(t_pushswap *data)
 {
 	int		i;
@@ -165,6 +119,8 @@ void	print_this(t_list *stack)
 	int		cost_a;
 	int		cost_b;
 	int		nbr_value;
+	int		total_cost;
+	int		id;
 	t_list	*head;
 
 	head = stack;
@@ -174,27 +130,13 @@ void	print_this(t_list *stack)
 		cost_b = ((t_nbr *)(head->content))->move.cost_b;
 		nbr_value = ((t_nbr *)(head->content))->nbr;
 		idx = ((t_nbr *)(head->content))->idx;
-		printf("nbr | idx | cost_a | cost_b\n%d | %d | %d | %d\n", nbr_value, idx, cost_a, cost_b);
+		id = ((t_nbr *)(head->content))->group_id;
+		total_cost = ((t_nbr *)(head->content))->cost;
+		printf("nbr | idx | id | cost_a | cost_b | total_cost\n%d | %d | %d | %d | %d | %d\n", nbr_value, idx, id, cost_a, cost_b, total_cost);
 		head = head->next;
 	}
 }
 
-void	this_shit_works(t_pushswap *data)
-{
-	int		cost;
-	int		id;
-	int		move_cost;
-
-	cost = 0;
-	move_cost = 0;
-	if (data->length <= 100)
-		id = 3;
-	else
-		id = 7;
-	group_sort(data);
-	cost_assign(data);
-	print_this(data->stack_b);
-}
 /*
 void	final_step(t_pushswap *data)
 {

@@ -6,20 +6,11 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:26:31 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/20 16:32:51 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:46:55 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    p_stack(t_list *stack)
-{
-	while(stack)
-	{
-		printf("%d\n", ((t_nbr *)stack->content)->nbr);
-		stack = stack->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -38,8 +29,7 @@ int	main(int argc, char **argv)
 	if (data.length <= 5)
 		small_sort(&data);
 	else
-		this_shit_works(&data);
-		//radix_binary_sort(&data);
+		final_sort(&data);
 	free_stack(&data);
 	return (1);
 }

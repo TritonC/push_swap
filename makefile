@@ -12,7 +12,7 @@ LFLAGS	= -L${LIBFT_DIR} -lft
 IDIR	= .
 IFLAGS	= -I${IDIR} -I${LIBFT_DIR}
 
-SRCS	= operations.c utils.c parser.c sort.c group_sort.c
+SRCS	= operations.c utils.c parser.c sort.c group_sort.c move_cost.c
 MSRCS	= main.c
 BSRCS	= checker.c
 

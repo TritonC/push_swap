@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/22 18:15:05 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:45:36 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ void	radix_binary_sort(t_pushswap *data)
 
 void	sort_3(t_pushswap *data)
 {
-	if (((t_nbr *)data->stack_a->content)->idx == data->length - 1)
-		stack_operation(data, OP_RA, 1);
-	else if (((t_nbr *)ft_lstlast(data->stack_a)->content)->idx
-		!= data->length - 1)
-		stack_operation(data, OP_RRA, 1);
-	if (((t_nbr *)data->stack_a->content)->nbr
-		> ((t_nbr *)data->stack_a->next->content)->nbr)
+	if (((t_nbr *)data->stack_a->content)->idx
+		> ((t_nbr *)data->stack_a->next->content)->idx)
 		stack_operation(data, OP_SA, 1);
+	else if (((t_nbr *)data->stack_a->content)->idx
+		> ((t_nbr *)data->stack_a->next->next->content)->idx)
+		stack_operation(data, OP_RRA, 1);
 }
 
 static void	rotate_smallest_to_top(t_pushswap *data)
