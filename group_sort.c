@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/24 19:34:37 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:26:58 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	group_sort(t_pushswap *data)
 		}
 		id++;
 	}
-	data->length = ft_lstsize(data->stack_a);
+//	data->length = ft_lstsize(data->stack_a);
 	sort_3(data);
 }
 
