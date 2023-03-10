@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 10:59:08 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:20:25 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	abs_max(int a, int b)
 		return (abs(b));
 }
 
-static void	cost_evaluate(t_pushswap *data, int id)
+static void	cost_evaluate(t_pushswap *data)
 {
 	t_list	*head_b;
 	int		cost_a;
@@ -39,21 +39,18 @@ static void	cost_evaluate(t_pushswap *data, int id)
 	head_b = data->stack_b;
 	while (head_b)
 	{
-		if (head_b && ((t_nbr *)(head_b->content))->group_id == id)
-		{
-			cost_a = ((t_nbr *)(head_b->content))->move.cost_a;
-			cost_b = ((t_nbr *)(head_b->content))->move.cost_b;
-			if ((cost_a > 0 && cost_b > 0) || (cost_a < 0 && cost_b < 0))
-				((t_nbr *)(head_b->content))->cost = abs_max(cost_a, cost_b);
-			else if (cost_a < 0 && cost_b > 0)
-				((t_nbr *)(head_b->content))->cost = abs(cost_a) + cost_b;
-			else if (cost_a > 0 && cost_b < 0)
-				((t_nbr *)(head_b->content))->cost = cost_a + abs(cost_b);
-			else
-				((t_nbr *)(head_b->content))->cost = cost_a + cost_b;
-			if (((t_nbr *)(head_b->content))->cost < 0)
-				((t_nbr *)(head_b->content))->cost *= -1;
-		}
+		cost_a = ((t_nbr *)(head_b->content))->move.cost_a;
+		cost_b = ((t_nbr *)(head_b->content))->move.cost_b;
+		if ((cost_a > 0 && cost_b > 0) || (cost_a < 0 && cost_b < 0))
+			((t_nbr *)(head_b->content))->cost = abs_max(cost_a, cost_b);
+		else if (cost_a < 0 && cost_b > 0)
+			((t_nbr *)(head_b->content))->cost = abs(cost_a) + cost_b;
+		else if (cost_a > 0 && cost_b < 0)
+			((t_nbr *)(head_b->content))->cost = cost_a + abs(cost_b);
+		else
+			((t_nbr *)(head_b->content))->cost = cost_a + cost_b;
+		if (((t_nbr *)(head_b->content))->cost < 0)
+			((t_nbr *)(head_b->content))->cost *= -1;
 		head_b = head_b->next;
 	}
 }
@@ -69,7 +66,7 @@ t_list *max_node(t_pushswap *data)
 	return (head);
 }
 
-t_list	*best_move(t_pushswap *data, int id)
+t_list	*best_move(t_pushswap *data)
 {
 	int		low_cost;
 	t_list	*head_b;
@@ -77,14 +74,13 @@ t_list	*best_move(t_pushswap *data, int id)
 
 	head_b = data->stack_b;
 	low_cost = INT32_MAX;
-	cost_evaluate(data, id);
+	cost_evaluate(data);
 	size = ft_lstsize(head_b) + 3;
 	if (size == data->length)
 		return (max_node(data));
 	while (head_b)
 	{
-		if (((t_nbr *)(head_b->content))->cost < low_cost
-			&& ((t_nbr *)(head_b->content))->group_id == id)
+		if (((t_nbr *)(head_b->content))->cost < low_cost)
 			low_cost = ((t_nbr *)(head_b->content))->cost;
 		head_b = head_b->next;
 	}
@@ -106,7 +102,7 @@ void	final2(t_pushswap *data, int id)
 	int		move_a;
 	int		move_b;
 
-	to_move = best_move(data, id);
+	to_move = best_move(data);
 	move_a = ((t_nbr *)(to_move->content))->move.cost_a;
 	move_b = ((t_nbr *)(to_move->content))->move.cost_b;
 	while (move_a < 0 && move_b < 0)
