@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 11:48:51 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:47:18 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,10 @@ t_list	*best_move(t_pushswap *data)
 {
 	int		low_cost;
 	t_list	*head_b;
-	int		size;
 
 	head_b = data->stack_b;
 	low_cost = INT32_MAX;
 	cost_evaluate(data);
-	size = ft_lstsize(head_b) + 3;
-	if (size == data->length)
-		return (max_node(data));
 	while (head_b)
 	{
 		if (((t_nbr *)(head_b->content))->cost < low_cost)
@@ -123,12 +119,6 @@ void	final2(t_pushswap *data)
 
 void	final_sort(t_pushswap *data)
 {
-	int		id;
-
-	if (data->length <= 100)
-		id = 3;
-	else
-		id = 7;
 	group_sort(data);
 	cost_assign(data);
 	// print_this(data->stack_a);

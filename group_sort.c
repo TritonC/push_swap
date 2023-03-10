@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 11:27:44 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:03:06 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,24 @@ void	group_sort(t_pushswap *data)
 
 int	get_lower_idx(t_list *stack_a, int idx_from_b)
 {
+	int		idx_pos_max;
 	int		idx_pos;
 	t_list	*head;
 
 	head = stack_a;
 	idx_pos = INT32_MAX;
+	idx_pos_max = INT32_MAX;
 	while (head)
 	{
+		if (idx_pos_max > idx_pos)
+			idx_pos_max = idx_pos;
 		if (((t_nbr *)(head->content))->idx > idx_from_b
 			&& ((t_nbr *)(head->content))->idx < idx_pos)
 			idx_pos = ((t_nbr *)(head->content))->idx;
 		head = head->next;
 	}
 	if (idx_pos == INT32_MAX)
-		idx_pos = idx_from_b;
+		idx_pos = idx_pos_max;
 	return (idx_pos);
 }
 
