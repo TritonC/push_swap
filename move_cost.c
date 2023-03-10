@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 10:36:56 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:46:28 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ t_list *max_node(t_pushswap *data)
 
 	head = data->stack_b;
 	while (((t_nbr *)(head->content))->idx != data->length - 1)
-	{
 		head = head->next;
-	}
 	((t_nbr *)(head->content))->move.cost_a = 0;
 	return (head);
 }
