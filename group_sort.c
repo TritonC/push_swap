@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 09:26:58 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:27:44 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	cost_assign(t_pushswap *data)
 			head_a = head_a->next;
 		}
 		((t_nbr *)(head_b->content))->move.cost_b = c_value(data->stack_b, j);
-		((t_nbr *)(head_b->content))->move.cost_a = c_value(data->stack_b, i);
+		((t_nbr *)(head_b->content))->move.cost_a = c_value(data->stack_a, i);
 		head_b = head_b->next;
 		j++;
 	}
