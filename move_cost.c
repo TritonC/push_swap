@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/02 14:11:15 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:22:11 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@ t_list	*best_move(t_pushswap *data, int id)
 	return (head_b);
 }
 
+void	do_op(t_pushswap *data, char *str, int i, int op)
+{
+	(void)op;
+	stack_operation(data, str, i);
+}
+
 void	final2(t_pushswap *data, int id)
 {
 	t_list	*to_move;
@@ -95,18 +101,18 @@ void	final2(t_pushswap *data, int id)
 	to_move = best_move(data, id);
 	move_a = ((t_nbr *)(to_move->content))->move.cost_a;
 	move_b = ((t_nbr *)(to_move->content))->move.cost_b;
-	while (++move_a != 0 && ++move_b != 0 && (move_a < 0 && move_b < 0))
-		stack_operation(data, OP_RRR, 1);
-	while (move_a != 0 && ++move_a < 0)
-		stack_operation(data, OP_RRA, 1);
-	while (move_b != 0 && ++move_b < 0)
-		stack_operation(data, OP_RRB, 1);
-	while (--move_a != 0 && --move_b != 0 && (move_a > 0 && move_b > 0))
-		stack_operation(data, OP_RR, 1);
-	while (move_a != 0 && --move_a > 0)
-		stack_operation(data, OP_RA, 1);
-	while (move_b != 0 && --move_b > 0)
-		stack_operation(data, OP_RB, 1);
+	while (move_a < 0 && move_b < 0)
+		do_op(data, OP_RRR, 1, move_a++ - move_b++);
+	while (move_a != 0 && move_a < 0)
+		do_op(data, OP_RRA, 1, move_a++);
+	while (move_b != 0 && move_b < 0)
+		do_op(data, OP_RRB, 1, move_b++);
+	while (move_a > 0 && move_b > 0)
+		do_op(data, OP_RR, 1, move_a-- + move_b--);
+	while (move_a != 0 && move_a > 0)
+		do_op(data, OP_RA, 1, move_a--);
+	while (move_b != 0 && move_b > 0)
+		do_op(data, OP_RB, 1, move_b--);
 	stack_operation(data, OP_PA, 1);
 	cost_assign(data);
 }
@@ -125,10 +131,10 @@ void	final_sort(t_pushswap *data)
 	// printf("\n");
 	// print_this(data->stack_b);
 
-	// while (data->stack_b)
-	// {
-	// 	while (group_check(data->stack_b, id))
-	// 		final2(data, id);
-	// 	id--;
-	// }
+	while (data->stack_b)
+	{
+		while (group_check(data->stack_b, id))
+			final2(data, id);
+		id--;
+	}
 }
