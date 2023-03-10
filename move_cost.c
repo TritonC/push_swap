@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 10:15:33 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:36:56 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ t_list	*find_max(t_pushswap *data)
 	while (((t_nbr *)(head->content))->idx != data->length)
 		head = head->next;
 	return (head);
+}
+
+int	abs_max(int a, int b)
+{
+	if (abs(a) > abs(b))
+		return (abs(a));
+	else
+		return (abs(b));
 }
 
 static void	cost_evaluate(t_pushswap *data, int id)
@@ -36,11 +44,11 @@ static void	cost_evaluate(t_pushswap *data, int id)
 			cost_a = ((t_nbr *)(head_b->content))->move.cost_a;
 			cost_b = ((t_nbr *)(head_b->content))->move.cost_b;
 			if ((cost_a > 0 && cost_b > 0) || (cost_a < 0 && cost_b < 0))
-				((t_nbr *)(head_b->content))->cost = cost_a + cost_b;
+				((t_nbr *)(head_b->content))->cost = abs_max(cost_a, cost_b);
 			else if (cost_a < 0 && cost_b > 0)
-				((t_nbr *)(head_b->content))->cost = (cost_a * -1) + cost_b;
+				((t_nbr *)(head_b->content))->cost = abs(cost_a) + cost_b;
 			else if (cost_a > 0 && cost_b < 0)
-				((t_nbr *)(head_b->content))->cost = cost_a + (cost_b * -1);
+				((t_nbr *)(head_b->content))->cost = cost_a + abs(cost_b);
 			else
 				((t_nbr *)(head_b->content))->cost = cost_a + cost_b;
 			if (((t_nbr *)(head_b->content))->cost < 0)
