@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 10:44:28 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:23:44 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	index_stack(t_pushswap *data)
 	while (i < data->length)
 	{
 		min_lst = NULL;
-		min = INT32_MAX;
+		min = INT_MAX;
 		lst = data->stack_a;
 		while (lst)
 		{
@@ -60,7 +60,7 @@ void	define_group_size(t_pushswap *data)
 {
 	if (data->length <= 100)
 		data->group_size = data->length / 3;
-	if (data->length <= 500)
+	else if (data->length <= 500)
 		data->group_size = data->length / 7;
 }
 

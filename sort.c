@@ -6,52 +6,11 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:14:01 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:50:18 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	stack_push_bit(t_pushswap *data, int bit)
-{
-	int		i;
-	t_list	*lst;
-
-	lst = data->stack_a;
-	i = 0;
-	while (lst && i < data->length)
-	{
-		if (((((t_nbr *)lst->content)->idx >> bit) & 1) == 1)
-			stack_operation(data, OP_RA, 1);
-		else
-			stack_operation(data, OP_PB, 1);
-		lst = data->stack_a;
-		i++;
-	}
-}
-
-void	radix_binary_sort(t_pushswap *data)
-{
-	int		max_bits;
-	int		bit;
-	t_list	*lst;
-
-	max_bits = 0;
-	while ((data->length >> max_bits) != 0)
-		max_bits++;
-	bit = 0;
-	while (bit < max_bits)
-	{
-		stack_push_bit(data, bit);
-		lst = data->stack_b;
-		while (lst)
-		{
-			stack_operation(data, OP_PA, 1);
-			lst = data->stack_b;
-		}
-		bit++;
-	}
-}
 
 void	sort_3(t_pushswap *data)
 {
@@ -59,7 +18,8 @@ void	sort_3(t_pushswap *data)
 	t_list	*head;
 
 	head = data->stack_a;
-	max = INT_MIN;
+	max = -1;
+	printf("Entra");
 	while (head)
 	{
 		if (((t_nbr *)head->content)->idx > max)
@@ -68,10 +28,10 @@ void	sort_3(t_pushswap *data)
 	}
 	if (((t_nbr *)data->stack_a->content)->idx == max)
 		stack_operation(data, OP_RA, 1);
-	if (((t_nbr *)data->stack_a->next->content)->idx == max)
+	else if (((t_nbr *)data->stack_a->next->content)->idx == max)
 		stack_operation(data, OP_RRA, 1);
-	if (((t_nbr *)data->stack_a->content)->idx > 
-		((t_nbr *)data->stack_a->next->content)->idx)
+	if (((t_nbr *)data->stack_a->content)->idx
+		> ((t_nbr *)data->stack_a->next->content)->idx)
 		stack_operation(data, OP_SA, 1);
 }
 

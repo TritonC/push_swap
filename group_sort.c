@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:18:28 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:55:26 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	group_sort(t_pushswap *data)
 
 	id = 1;
 	lst_size = ft_lstsize(data->stack_b);
-	while (lst_size != 3)
+	while (data->stack_a)
 	{
-		while (group_check(data->stack_a, id) && lst_size != 3)
+		while (group_check(data->stack_a, id))
 		{
 			if (((t_nbr *)data->stack_a->content)->group_id == id)
 				stack_operation(data, OP_PB, 1);
@@ -47,12 +47,10 @@ void	group_sort(t_pushswap *data)
 			}
 			else
 				stack_operation(data, OP_RRA, 1);
-			lst_size = ft_lstsize(data->stack_a);
+//			lst_size = ft_lstsize(data->stack_a);
 		}
 		id++;
 	}
-//	data->length = ft_lstsize(data->stack_a);
-	sort_3(data);
 }
 
 int	get_lower_idx(t_list *stack_a, int idx_from_b)
@@ -66,8 +64,8 @@ int	get_lower_idx(t_list *stack_a, int idx_from_b)
 	idx_pos_max = INT_MAX;
 	while (head)
 	{
-		if (idx_pos_max > idx_pos)
-			idx_pos_max = idx_pos;
+		if (idx_pos_max > ((t_nbr *)(head->content))->idx)
+			idx_pos_max = ((t_nbr *)(head->content))->idx;
 		if (((t_nbr *)(head->content))->idx > idx_from_b
 			&& ((t_nbr *)(head->content))->idx < idx_pos)
 			idx_pos = ((t_nbr *)(head->content))->idx;

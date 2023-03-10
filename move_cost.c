@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:14:23 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:54:26 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	final_sort(t_pushswap *data)
 {
 	group_sort(data);
 	cost_assign(data);
+	//sort_3(data);
 	// print_this(data->stack_a);
 	// printf("\n");
 	// print_this(data->stack_b);
