@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:14:41 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:18:28 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	get_lower_idx(t_list *stack_a, int idx_from_b)
 			idx_pos = ((t_nbr *)(head->content))->idx;
 		head = head->next;
 	}
-	if (idx_pos == INT32_MAX)
+	if (idx_pos == INT_MAX)
 		idx_pos = idx_pos_max;
 	return (idx_pos);
 }
