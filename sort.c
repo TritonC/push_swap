@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/24 19:45:36 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:11:42 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,24 @@ void	radix_binary_sort(t_pushswap *data)
 
 void	sort_3(t_pushswap *data)
 {
-	if (((t_nbr *)data->stack_a->content)->idx
-		> ((t_nbr *)data->stack_a->next->content)->idx)
-		stack_operation(data, OP_SA, 1);
-	else if (((t_nbr *)data->stack_a->content)->idx
-		> ((t_nbr *)data->stack_a->next->next->content)->idx)
+	int		max;
+	t_list	*head;
+
+	head = data->stack_a;
+	max = INT32_MIN;
+	while (head)
+	{
+		if (((t_nbr *)head->content)->idx > max)
+			max = ((t_nbr *)data->stack_a->content)->idx;
+		head = head->next;
+	}
+	if (((t_nbr *)data->stack_a->content)->idx == max)
+		stack_operation(data, OP_RA, 1);
+	if (((t_nbr *)data->stack_a->next->content)->idx == max)
 		stack_operation(data, OP_RRA, 1);
+	if (((t_nbr *)data->stack_a->content)->idx > 
+		((t_nbr *)data->stack_a->next->content)->idx)
+		stack_operation(data, OP_SA, 1);
 }
 
 static void	rotate_smallest_to_top(t_pushswap *data)

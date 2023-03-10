@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 09:45:36 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 10:15:33 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,16 +104,16 @@ void	final2(t_pushswap *data, int id)
 	move_a = ((t_nbr *)(to_move->content))->move.cost_a;
 	move_b = ((t_nbr *)(to_move->content))->move.cost_b;
 	while (move_a < 0 && move_b < 0)
-		do_op(data, OP_RRR, 1, move_a++ - move_b++);
-	while (move_a != 0 && move_a < 0)
-		do_op(data, OP_RRA, 1, move_a++);
-	while (move_b != 0 && move_b < 0)
-		do_op(data, OP_RRB, 1, move_b++);
+		do_op(data, OP_RRR, 1, move_a++ + move_b++);
 	while (move_a > 0 && move_b > 0)
 		do_op(data, OP_RR, 1, move_a-- + move_b--);
-	while (move_a != 0 && move_a > 0)
+	while (move_a < 0)
+		do_op(data, OP_RRA, 1, move_a++);
+	while (move_b < 0)
+		do_op(data, OP_RRB, 1, move_b++);
+	while (move_a > 0)
 		do_op(data, OP_RA, 1, move_a--);
-	while (move_b != 0 && move_b > 0)
+	while (move_b > 0)
 		do_op(data, OP_RB, 1, move_b--);
 	stack_operation(data, OP_PA, 1);
 	cost_assign(data);
