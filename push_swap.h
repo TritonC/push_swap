@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/24 17:14:11 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:48:46 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	print_this(t_list *stack);
 void	sort_3(t_pushswap *data);
 void	final_sort(t_pushswap *data);
 void	this_shit_works(t_pushswap *data);
+void	do_op(t_pushswap *data, char *str, int i, int op);
+void	clear_rotation(t_pushswap *data);
 
 int		is_sorted(t_list *lst);
 int		group_check(t_list *stack, int group_id);

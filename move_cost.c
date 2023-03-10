@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 11:20:25 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:48:51 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	do_op(t_pushswap *data, char *str, int i, int op)
 	stack_operation(data, str, i);
 }
 
-void	final2(t_pushswap *data, int id)
+void	final2(t_pushswap *data)
 {
 	t_list	*to_move;
 	int		move_a;
@@ -136,9 +136,6 @@ void	final_sort(t_pushswap *data)
 	// print_this(data->stack_b);
 
 	while (data->stack_b)
-	{
-		while (group_check(data->stack_b, id))
-			final2(data, id);
-		id--;
-	}
+		final2(data);
+	clear_rotation(data);
 }
