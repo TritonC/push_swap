@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:03:06 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:14:41 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	get_lower_idx(t_list *stack_a, int idx_from_b)
 	t_list	*head;
 
 	head = stack_a;
-	idx_pos = INT32_MAX;
-	idx_pos_max = INT32_MAX;
+	idx_pos = INT_MAX;
+	idx_pos_max = INT_MAX;
 	while (head)
 	{
 		if (idx_pos_max > idx_pos)

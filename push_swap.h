@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 11:48:46 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:13:29 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 
 # include "libft.h"
 
+#include <limits.h>
+
 // Limit marcos
 
 # ifndef INT32_MAX
 #  define INT32_MAX 2147483647
-# endif
-# ifndef INT32_MIN
-#  define INT32_MIN -2147483648
 # endif
 
 // Operations macros

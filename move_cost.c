@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 12:47:18 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:14:23 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_list	*best_move(t_pushswap *data)
 	t_list	*head_b;
 
 	head_b = data->stack_b;
-	low_cost = INT32_MAX;
+	low_cost = INT_MAX;
 	cost_evaluate(data);
 	while (head_b)
 	{
