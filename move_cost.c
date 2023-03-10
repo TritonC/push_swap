@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 09:22:11 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:45:36 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_list *max_node(t_pushswap *data)
 	t_list	*head;
 
 	head = data->stack_b;
-	while (((t_nbr *)(head->content))->idx != data->length)
+	while (((t_nbr *)(head->content))->idx != data->length - 1)
 	{
 		head = head->next;
 	}
@@ -67,11 +67,13 @@ t_list	*best_move(t_pushswap *data, int id)
 {
 	int		low_cost;
 	t_list	*head_b;
+	int		size;
 
 	head_b = data->stack_b;
 	low_cost = INT32_MAX;
 	cost_evaluate(data, id);
-	if (ft_lstsize(head_b) == data->length)
+	size = ft_lstsize(head_b) + 3;
+	if (size == data->length)
 		return (max_node(data));
 	while (head_b)
 	{
