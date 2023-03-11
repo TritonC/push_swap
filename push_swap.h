@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:22:34 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 09:20:38 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,15 @@ void	clear_rotation(t_pushswap *data);
 
 int		is_sorted(t_list *lst);
 int		group_check(t_list *stack, int group_id);
+int		abs_max(int a, int b);
+int		is_dup(t_list *lst, int nbr);
+int		get_smallest_num_idx(t_pushswap *data);
 void	free_stack(t_pushswap *data);
 void	ft_lstswap_content(t_list *a, t_list *b);
 void	exit_error(char *err);
 void	group_sort(t_pushswap *data);
-int		get_smallest_num_idx(t_pushswap *data);
+
+t_list	*find_max(t_pushswap *data);
+
 
 #endif

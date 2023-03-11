@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:26:01 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 12:31:55 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 09:24:12 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,4 @@ int	get_smallest_num_idx(t_pushswap *data)
 		lst = lst->next;
 	}
 	return (smallest_num_idx);
-}
-
-void	clear_rotation(t_pushswap *data)
-{
-	int		i;
-	t_list	*head;
-
-	head = data->stack_a;
-	i = 0;
-	while (((t_nbr *)head->content)->idx != 0)
-	{
-		i++;
-		head = head->next;
-	}
-	if (i > ft_lstsize(data->stack_a) / 2)
-		i = i - ft_lstsize(data->stack_a);
-	while (i > 0)
-		do_op(data, OP_RA, 1, i--);
-	while (i < 0)
-		do_op(data, OP_RRA, 1, i++);
 }

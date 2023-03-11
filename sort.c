@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:50:18 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 09:10:18 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,10 @@ void	small_sort(t_pushswap *data)
 		sort_3(data);
 	while (data->stack_b)
 		stack_operation(data, OP_PA, 1);
+}
+
+void	do_op(t_pushswap *data, char *str, int i, int op)
+{
+	(void)op;
+	stack_operation(data, str, i);
 }

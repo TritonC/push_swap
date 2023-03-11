@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:55:26 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 09:09:54 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	group_sort(t_pushswap *data)
 			}
 			else
 				stack_operation(data, OP_RRA, 1);
-//			lst_size = ft_lstsize(data->stack_a);
 		}
 		id++;
 	}
@@ -114,73 +113,3 @@ void	cost_assign(t_pushswap *data)
 		j++;
 	}
 }
-
-void	print_this(t_list *stack)
-{
-	int		idx;
-	int		cost_a;
-	int		cost_b;
-	int		nbr_value;
-	int		total_cost;
-	int		id;
-	t_list	*head;
-
-	head = stack;
-	while (head)
-	{
-		cost_a = ((t_nbr *)(head->content))->move.cost_a;
-		cost_b = ((t_nbr *)(head->content))->move.cost_b;
-		nbr_value = ((t_nbr *)(head->content))->nbr;
-		idx = ((t_nbr *)(head->content))->idx;
-		id = ((t_nbr *)(head->content))->group_id;
-		total_cost = ((t_nbr *)(head->content))->cost;
-		printf("nbr | idx | id | cost_a | cost_b | total_cost\n%d | %d | %d | %d | %d | %d\n", nbr_value, idx, id, cost_a, cost_b, total_cost);
-		head = head->next;
-	}
-}
-
-/*
-void	final_step(t_pushswap *data)
-{
-	int		cost;
-	int		max_id;
-	int		move_cost;
-
-	cost = 0;
-	move_cost = 0;
-	if (data->length <= 100)
-		max_id = 3;
-	else
-		max_id = 7;
-	while (data->stack_b)
-	{
-		while (group_check(data->stack_b, max_id))
-		{
-			
-		}
-	}
-}*/
-
-/*
-500
-
-256
--500 
--44
-if( move < 0)
-
-if (move )
-
-cost 10
-cost 7
-cost < min mov
-2 1 3 4 5 .... 500
-
-0 0 1 1
-0 0 0 1
-
-<< 1
-<< 2
-
-500
-*/

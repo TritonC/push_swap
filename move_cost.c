@@ -6,29 +6,11 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/10 13:54:26 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 09:16:12 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*find_max(t_pushswap *data)
-{
-	t_list	*head;
-
-	head = data->stack_b;
-	while (((t_nbr *)(head->content))->idx != data->length)
-		head = head->next;
-	return (head);
-}
-
-int	abs_max(int a, int b)
-{
-	if (abs(a) > abs(b))
-		return (abs(a));
-	else
-		return (abs(b));
-}
 
 static void	cost_evaluate(t_pushswap *data)
 {
@@ -55,7 +37,7 @@ static void	cost_evaluate(t_pushswap *data)
 	}
 }
 
-t_list *max_node(t_pushswap *data)
+t_list	*max_node(t_pushswap *data)
 {
 	t_list	*head;
 
@@ -84,12 +66,6 @@ t_list	*best_move(t_pushswap *data)
 	while (low_cost != ((t_nbr *)(head_b->content))->cost)
 		head_b = head_b->next;
 	return (head_b);
-}
-
-void	do_op(t_pushswap *data, char *str, int i, int op)
-{
-	(void)op;
-	stack_operation(data, str, i);
 }
 
 void	final2(t_pushswap *data)
@@ -121,11 +97,6 @@ void	final_sort(t_pushswap *data)
 {
 	group_sort(data);
 	cost_assign(data);
-	//sort_3(data);
-	// print_this(data->stack_a);
-	// printf("\n");
-	// print_this(data->stack_b);
-
 	while (data->stack_b)
 		final2(data);
 	clear_rotation(data);
