@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 05:40:14 by cthien-h          #+#    #+#             */
-/*   Updated: 2023/03/11 13:34:34 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:19:10 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	is_operator(char *line)
 {
-	if (!ft_strncmp(line, OP_PA, ft_strlen(OP_PA) + 1)
+	if (!ft_strncmp(line, "pa\n", ft_strlen(OP_PA) + 1)
 		|| !ft_strncmp(line, OP_PB, ft_strlen(OP_PB) + 1)
 		|| !ft_strncmp(line, OP_RA, ft_strlen(OP_RA) + 1)
 		|| !ft_strncmp(line, OP_RB, ft_strlen(OP_RB) + 1)

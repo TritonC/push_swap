@@ -6,7 +6,7 @@
 #    By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 11:22:32 by mluis-fu          #+#    #+#              #
-#    Updated: 2023/03/11 13:29:03 by mluis-fu         ###   ########.fr        #
+#    Updated: 2023/03/11 14:17:59 by mluis-fu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 
 OBJ_DIR = obj
 
-SRC_BONUS = checker_utils.c checker.c operation.c parser.c
+SRC_BONUS = checker_utils.c operation.c parser.c checker.c
 
 BONUS_FILES = $(SRC_BONUS:.c=.o)
 
