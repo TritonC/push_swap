@@ -6,18 +6,11 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 09:25:27 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 14:00:28 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	init_value(t_pushswap *data, t_list *min_lst, int min, t_list *lst)
-{
-	min_lst = NULL;
-	min = INT_MAX;
-	lst = data->stack_a;
-}
 
 void	define_group_size(t_pushswap *data)
 {
@@ -48,7 +41,9 @@ static void	index_stack(t_pushswap *data)
 	j = 1;
 	while (i < data->length)
 	{
-		init_value(data, min_lst, min, lst);
+		min_lst = NULL;
+		min = INT_MAX;
+		lst = data->stack_a;
 		while (lst)
 		{
 			if (min >= ((t_nbr *)lst->content)->nbr
@@ -80,7 +75,7 @@ void	read_stack(t_pushswap *data, int argc, char **argv)
 		if (!ft_isnbr(argv[i]))
 			exit_error("Error");
 		tmp = ft_atoll(argv[i]);
-		if (tmp > INT32_MAX || tmp < INT32_MIN)
+		if (tmp > INT_MAX || tmp < INT_MIN)
 			exit_error("Error");
 		if (is_dup(data->stack_a, tmp))
 			exit_error("Error");

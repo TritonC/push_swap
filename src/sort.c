@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 10:08:13 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 12:33:25 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,9 @@
 
 void	sort_3(t_pushswap *data)
 {
-	int		max;
-	t_list	*head;
-
-	head = data->stack_a;
-	max = -1;
-	while (head)
-	{
-		if (((t_nbr *)head->content)->idx > max)
-			max = ((t_nbr *)data->stack_a->content)->idx;
-		head = head->next;
-	}
-	if (((t_nbr *)data->stack_a->content)->idx == max)
+	if (((t_nbr *)data->stack_a->content)->idx == data->length - 1)
 		stack_operation(data, OP_RA, 1);
-	else if (((t_nbr *)data->stack_a->next->content)->idx == max)
+	else if (((t_nbr *)data->stack_a->next->content)->idx == data->length - 1)
 		stack_operation(data, OP_RRA, 1);
 	if (((t_nbr *)data->stack_a->content)->idx
 		> ((t_nbr *)data->stack_a->next->content)->idx)

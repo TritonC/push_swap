@@ -1,44 +1,87 @@
-SHELL	= /bin/sh
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/11 11:22:32 by mluis-fu          #+#    #+#              #
+#    Updated: 2023/03/11 13:29:03 by mluis-fu         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME	= push_swap
+NAME = push_swap
 
 CHECKER = checker
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CC = gcc
 
-LIBFT_DIR = ./libft
+INCLUDES = -I inc/libft/ -I inc
 
-LFLAGS	= -L${LIBFT_DIR} -lft
+CFLAGS = -Wall -Werror -Wextra -g3 $(INCLUDES)
 
-IDIR	= .
-IFLAGS	= -I${IDIR} -I${LIBFT_DIR}
+SRC_DIR = src
 
-SRCS	= operations.c utils.c parser.c sort.c group_sort.c move_cost.c ps_utils.c
-MSRCS	= main.c
-BSRCS	= checker.c
+BONUS_SRC = bonus
 
-RM		= rm -f
+CHECKER_FILE = src/checker.c
 
-.PHONY: all clean fclean re bonus ${CHECKER}
+SRC_FILES = operations.c utils.c parser.c sort.c group_sort.c move_cost.c ps_utils.c main.c
 
-${NAME}: ${MSRCS} ${SRCS}
-		@make -C ${LIBFT_DIR}
-		${CC} ${CFLAGS} ${MSRCS} ${SRCS} ${IFLAGS} ${LFLAGS} -o ${NAME}
+OBJ_FILES = $(SRC_FILES:.c=.o)
 
-${CHECKER}: ${SRCS} ${BSRCS}
-		@make -C ${LIBFT_DIR}
-		${CC} ${CFLAGS} ${BSRCS} ${SRCS} ${IFLAGS} ${LFLAGS} -o ${CHECKER}
+OBJ_DIR = obj
 
-all: ${NAME}
+SRC_BONUS = checker_utils.c checker.c operation.c parser.c
 
-bonus: all ${CHECKER}
+BONUS_FILES = $(SRC_BONUS:.c=.o)
+
+BONUS_DIR = bonus/obj
+
+BONUS_OBJ = $(addprefix $(BONUS_DIR)/, $(BONUS_FILES))
+
+OBJECTS = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
+
+LIBFT-DIR = inc/libft
+
+LIBFT_MAKE = inc/libft/libft.a
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS) $(LIBFT_MAKE)
+	@$(CC) $(CFLAGS) $(LIBFT_MAKE) -o $(NAME) $(OBJECTS) 
+
+${CHECKER}: ${BONUS_OBJ} ${LIBFT_MAKE}
+		$(CC) $(CFLAGS) $(LIBFT_MAKE) -o ${CHECKER} $(BONUS_OBJ)
+
+$(BONUS_DIR)/%.o: $(BONUS_SRC)/%.c
+	@mkdir -p $(BONUS_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(LIBFT_MAKE): | $(LIBFT-DIR)
+	@make -C $(LIBFT-DIR)
+
+bonus: ${CHECKER}
 
 clean:
-		@${RM} ${NAME} ${CHECKER}
-		@make clean -C ${LIBFT_DIR}
+	@rm -rf push_swap.dSYM
+	@make clean -C $(LIBFT-DIR)
+	@rm -rf $(BONUS_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-		@make fclean -C ${LIBFT_DIR}
+	@make fclean -C $(LIBFT-DIR)
+	@rm -f $(NAME) $(CHECKER)
 
 re: fclean all
+
+print-%:
+	$(info '$*'='$($*)')
+info-%:
+	$(MAKE) --dry-run --always-make $* | grep -v "info"
+
+.PHONY:	re clean fclean all

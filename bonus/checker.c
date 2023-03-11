@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cthien-h <cthien-h@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 05:40:14 by cthien-h          #+#    #+#             */
-/*   Updated: 2022/03/17 08:07:16 by cthien-h         ###   ########.fr       */
+/*   Updated: 2023/03/11 13:34:34 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static int	is_operator(char *line)
 {
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	data.stack_b = NULL;
 	read_stack(&data, argc, argv);
 	line = get_next_line(STDIN_FILENO);
-	while (line != NULL)
+	while (line != NULL && !is_sorted(data.stack_a))
 	{
 		if (!is_operator(line))
 			exit_error("Error");
