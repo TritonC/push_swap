@@ -2,6 +2,8 @@ SHELL	= /bin/sh
 
 NAME	= push_swap
 
+CHECKER = checker
+
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror -g3
 

@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 09:10:18 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/11 10:08:13 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	sort_3(t_pushswap *data)
 
 	head = data->stack_a;
 	max = -1;
-	printf("Entra");
 	while (head)
 	{
 		if (((t_nbr *)head->content)->idx > max)

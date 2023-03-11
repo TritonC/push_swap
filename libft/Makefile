@@ -49,7 +49,9 @@ FUNCTIONS = ft_putnbr_fd.c \
 			ft_lstlast.c \
 			ft_lstsize.c \
 			ft_lstadd_front.c \
-			ft_lstnew.c
+			ft_lstnew.c	\
+			get_next_line.c \
+			get_next_line_utils.c \
 
 OBJECTS = $(FUNCTIONS:.c=.o)
 
