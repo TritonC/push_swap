@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:56:26 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 13:41:29 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:43:59 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 # define CHECKER_H
 
 # include "limits.h"
-
-# include "stdio.h"
 
 # include "../inc/libft/libft.h"
 
