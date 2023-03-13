@@ -6,7 +6,7 @@
 #    By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/11 11:22:32 by mluis-fu          #+#    #+#              #
-#    Updated: 2023/03/13 08:19:43 by mluis-fu         ###   ########.fr        #
+#    Updated: 2023/03/13 11:17:55 by mluis-fu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = gcc
 
 INCLUDES = -I inc/libft/ -I inc
 
-CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
+CFLAGS = -Wall -Werror -Wextra $(INCLUDES) -g3
 
 SRC_DIR = src
 

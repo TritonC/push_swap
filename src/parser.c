@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 08:54:56 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:00:10 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	define_group_size(t_pushswap *data)
 {
-	if (data->length <= 100)
+	if (data->length < 3)
+		data->group_size = 1;
+	else if (data->length <= 100)
 		data->group_size = data->length / 3;
 	else if (data->length <= 500)
 		data->group_size = data->length / 7;
@@ -70,17 +72,24 @@ static void	index_stack(t_pushswap *data)
 void	read_stack(t_pushswap *data, int argc, char **argv)
 {
 	int			i;
-	long long	tmp;
+	int			tmp;
 	t_nbr		*nbr;
+	char		**split;
 
 	data->length = argc - 1;
 	i = 1;
-	while (i < argc)
+	while (argv[i])
 	{
-		if (!ft_isnbr(argv[i]))
+		split = ft_split(argv[i], ' ');
+		i++;
+	}
+	i = 0;
+	while (split[i])
+	{
+		if (!ft_isnbr(split[i]))
 			exit_error("Error");
-		tmp = ft_atoll(argv[i]);
-		if (tmp > INT32_MAX || tmp < INT32_MIN)
+		tmp = ft_atoi(split[i]);
+		if (tmp > INT_MAX || tmp < INT_MIN)
 			exit_error("Error");
 		if (is_dup(data->stack_a, tmp))
 			exit_error("Error");
