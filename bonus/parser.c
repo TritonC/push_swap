@@ -6,11 +6,11 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 09:05:46 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:42:55 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	init_nbr(t_nbr *nbr)
 {
@@ -49,30 +49,48 @@ static void	index_stack(t_pushswap *data)
 	}
 }
 
-void	read_stack(t_pushswap *data, int argc, char **argv)
+char	**split_argv(char **argv)
+{
+	int		i;
+	char	*dest;
+	char	**split;
+
+	i = 1;
+	dest = ft_calloc(1, 1);
+	while (argv[i])
+	{
+		dest = ft_strjoin(dest, argv[i]);
+		dest = ft_strjoin(dest, " ");
+		i++;
+	}
+	split = ft_split(dest, ' ');
+	return (split);
+}
+
+void	read_stack(t_pushswap *data, char **argv)
 {
 	int			i;
-	long long	tmp;
+	int			tmp;
 	t_nbr		*nbr;
+	char		**split;
 
-	data->length = argc - 1;
-	i = 1;
-	while (i < argc)
+	i = 0;
+	split = split_argv(argv);
+	while (split[i])
 	{
-		if (!ft_isnbr(argv[i]))
+		if (!ft_isnbr(split[i]))
 			exit_error("Error");
-		tmp = ft_atoll(argv[i]);
+		tmp = ft_atoi(split[i]);
 		if (tmp > INT_MAX || tmp < INT_MIN)
 			exit_error("Error");
 		if (is_dup(data->stack_a, tmp))
 			exit_error("Error");
 		nbr = ft_calloc(1, sizeof(t_nbr));
-		if (!nbr)
-			exit_error("Error");
 		nbr->nbr = tmp;
 		init_nbr(nbr);
 		ft_lstadd_back(&data->stack_a, ft_lstnew(nbr));
 		i++;
 	}
+	data->length = i;
 	index_stack(data);
 }

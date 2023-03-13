@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 11:23:13 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:37:27 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_pushswap
 	int		group_size;
 }	t_pushswap;
 
-void	read_stack(t_pushswap *data, int argc, char **argv);
+void	read_stack(t_pushswap *data, char **argv);
 void	stack_operation(t_pushswap *data, char *operation, int print_operation);
 
 void	radix_binary_sort(t_pushswap *data);
@@ -68,6 +68,7 @@ void	final_sort(t_pushswap *data);
 void	this_shit_works(t_pushswap *data);
 void	do_op(t_pushswap *data, char *str, int i, int op);
 void	clear_rotation(t_pushswap *data);
+char	**split_argv(char **argv);
 
 int		is_sorted(t_list *lst);
 int		group_check(t_list *stack, int group_id);

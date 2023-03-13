@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 05:40:14 by cthien-h          #+#    #+#             */
-/*   Updated: 2023/03/13 10:35:37 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:42:32 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	main(int argc, char **argv)
 	t_pushswap	data;
 	char		*line;
 
-	if (argc <= 3)
+	if (argc == 1)
 		return (EXIT_SUCCESS);
 	data.stack_a = NULL;
 	data.stack_b = NULL;
-	read_stack(&data, argc, argv);
+	read_stack(&data, argv);
 	line = get_next_line(STDIN_FILENO);
 	while (line != NULL && !is_sorted(data.stack_a))
 	{

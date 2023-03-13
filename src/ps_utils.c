@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:14:34 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 09:24:18 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:39:12 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,22 @@ void	clear_rotation(t_pushswap *data)
 		do_op(data, OP_RA, 1, i--);
 	while (i < 0)
 		do_op(data, OP_RRA, 1, i++);
+}
+
+char	**split_argv(char **argv)
+{
+	int		i;
+	char	*dest;
+	char	**split;
+
+	i = 1;
+	dest = ft_calloc(1, 1);
+	while (argv[i])
+	{
+		dest = ft_strjoin(dest, argv[i]);
+		dest = ft_strjoin(dest, " ");
+		i++;
+	}
+	split = ft_split(dest, ' ');
+	return (split);
 }

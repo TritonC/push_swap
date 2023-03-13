@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:26:31 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 11:14:15 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:36:57 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 		return (EXIT_SUCCESS);
 	data.stack_a = NULL;
 	data.stack_b = NULL;
-	read_stack(&data, argc, argv);
+	read_stack(&data, argv);
 	if (is_sorted(data.stack_a))
 	{
 		free_stack(&data);

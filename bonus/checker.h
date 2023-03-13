@@ -6,12 +6,16 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:56:26 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 14:18:42 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:41:29 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
+
+# include "limits.h"
+
+# include "stdio.h"
 
 # include "../inc/libft/libft.h"
 
@@ -50,7 +54,7 @@ typedef struct s_pushswap
 # define OP_RRB "rrb\n"
 # define OP_RRR "rrr\n"
 
-void	read_stack(t_pushswap *data, int argc, char **argv);
+void	read_stack(t_pushswap *data, char **argv);
 void	free_stack(t_pushswap *data);
 void	stack_operation(t_pushswap *data, char *operation, int print_operation);
 void	exit_error(char *err);

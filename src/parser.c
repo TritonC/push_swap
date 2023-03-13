@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 12:39:07 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:39:46 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,7 @@ static void	index_stack(t_pushswap *data)
 	}
 }
 
-char	**split_argv(char **argv)
-{
-	int		i;
-	char	*dest;
-	char	**split;
-
-	i = 1;
-	dest = ft_calloc(1, 1);
-	while (argv[i])
-	{
-		dest = ft_strjoin(dest, argv[i]);
-		dest = ft_strjoin(dest, " ");
-		i++;
-	}
-	printf("%s\n", dest);
-	split = ft_split(dest, ' ');
-	return (split);
-}
-
-void	read_stack(t_pushswap *data, int argc, char **argv)
+void	read_stack(t_pushswap *data, char **argv)
 {
 	int			i;
 	int			tmp;
@@ -96,7 +77,6 @@ void	read_stack(t_pushswap *data, int argc, char **argv)
 	char		**split;
 
 	i = 0;
-	(void)argc;
 	split = split_argv(argv);
 	while (split[i])
 	{
@@ -108,8 +88,6 @@ void	read_stack(t_pushswap *data, int argc, char **argv)
 		if (is_dup(data->stack_a, tmp))
 			exit_error("Error");
 		nbr = ft_calloc(1, sizeof(t_nbr));
-		if (!nbr)
-			exit_error("Error");
 		nbr->nbr = tmp;
 		init_nbr(nbr);
 		ft_lstadd_back(&data->stack_a, ft_lstnew(nbr));
