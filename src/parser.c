@@ -6,25 +6,11 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 08:18:51 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 08:54:56 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	lst_iter(t_list **lst, t_list **min_lst, int min)
-{
-	while ((*lst))
-	{
-		if (min >= ((t_nbr *)(*lst)->content)->nbr
-			&& ((t_nbr *)(*lst)->content)->idx < 0)
-		{
-			min = ((t_nbr *)(*lst)->content)->nbr;
-			(*min_lst) = (*lst);
-		}
-		(*lst) = (*lst)->next;
-	}
-}
 
 void	define_group_size(t_pushswap *data)
 {
@@ -41,6 +27,20 @@ void	init_nbr(t_nbr *nbr)
 	nbr->move.cost_a = 0;
 	nbr->move.cost_b = 0;
 	nbr->cost = 0;
+}
+
+void	lst_iter(t_list **lst, t_list **min_lst, int min)
+{
+	while ((*lst))
+	{
+		if (min >= ((t_nbr *)(*lst)->content)->nbr
+			&& ((t_nbr *)(*lst)->content)->idx < 0)
+		{
+			min = ((t_nbr *)(*lst)->content)->nbr;
+			(*min_lst) = (*lst);
+		}
+		(*lst) = (*lst)->next;
+	}
 }
 
 static void	index_stack(t_pushswap *data)
