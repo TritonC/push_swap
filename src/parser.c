@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 12:00:10 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:39:07 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,25 @@ static void	index_stack(t_pushswap *data)
 	}
 }
 
+char	**split_argv(char **argv)
+{
+	int		i;
+	char	*dest;
+	char	**split;
+
+	i = 1;
+	dest = ft_calloc(1, 1);
+	while (argv[i])
+	{
+		dest = ft_strjoin(dest, argv[i]);
+		dest = ft_strjoin(dest, " ");
+		i++;
+	}
+	printf("%s\n", dest);
+	split = ft_split(dest, ' ');
+	return (split);
+}
+
 void	read_stack(t_pushswap *data, int argc, char **argv)
 {
 	int			i;
@@ -76,14 +95,9 @@ void	read_stack(t_pushswap *data, int argc, char **argv)
 	t_nbr		*nbr;
 	char		**split;
 
-	data->length = argc - 1;
-	i = 1;
-	while (argv[i])
-	{
-		split = ft_split(argv[i], ' ');
-		i++;
-	}
 	i = 0;
+	(void)argc;
+	split = split_argv(argv);
 	while (split[i])
 	{
 		if (!ft_isnbr(split[i]))
@@ -101,6 +115,7 @@ void	read_stack(t_pushswap *data, int argc, char **argv)
 		ft_lstadd_back(&data->stack_a, ft_lstnew(nbr));
 		i++;
 	}
+	data->length = i;
 	define_group_size(data);
 	index_stack(data);
 }
