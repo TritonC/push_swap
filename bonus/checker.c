@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 05:40:14 by cthien-h          #+#    #+#             */
-/*   Updated: 2023/03/11 14:19:10 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 10:35:37 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	t_pushswap	data;
 	char		*line;
 
-	if (argc == 1)
+	if (argc <= 3)
 		return (EXIT_SUCCESS);
 	data.stack_a = NULL;
 	data.stack_b = NULL;
