@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 12:54:40 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 14:16:09 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 08:05:48 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	free_stack(t_pushswap *data)
 	ft_lstclear(&(data->stack_a), free);
 	ft_lstclear(&(data->stack_b), free);
 }
-
 
 int	is_dup(t_list *lst, int nbr)
 {

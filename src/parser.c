@@ -6,17 +6,24 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 11:49:20 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/13 08:18:51 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_value(t_pushswap *data, t_list *min_lst, int min, t_list *lst)
+void	lst_iter(t_list **lst, t_list **min_lst, int min)
 {
-	min_lst = NULL;
-	min = INT_MAX;
-	lst = data->stack_a;
+	while ((*lst))
+	{
+		if (min >= ((t_nbr *)(*lst)->content)->nbr
+			&& ((t_nbr *)(*lst)->content)->idx < 0)
+		{
+			min = ((t_nbr *)(*lst)->content)->nbr;
+			(*min_lst) = (*lst);
+		}
+		(*lst) = (*lst)->next;
+	}
 }
 
 void	define_group_size(t_pushswap *data)
@@ -51,16 +58,7 @@ static void	index_stack(t_pushswap *data)
 		min_lst = NULL;
 		min = INT_MAX;
 		lst = data->stack_a;
-		while (lst)
-		{
-			if (min >= ((t_nbr *)lst->content)->nbr
-				&& ((t_nbr *)lst->content)->idx < 0)
-			{
-				min = ((t_nbr *)lst->content)->nbr;
-				min_lst = lst;
-			}
-			lst = lst->next;
-		}
+		lst_iter(&lst, &min_lst, min);
 		((t_nbr *)min_lst->content)->idx = i;
 		((t_nbr *)min_lst->content)->group_id = j;
 		i++;
