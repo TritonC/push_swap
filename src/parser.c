@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 13:39:46 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/15 08:03:41 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,15 @@ void	read_stack(t_pushswap *data, char **argv)
 	int			i;
 	int			tmp;
 	t_nbr		*nbr;
-	char		**split;
+	char		**argv_split;
 
 	i = 0;
-	split = split_argv(argv);
-	while (split[i])
+	argv_split = split_argv(argv);
+	while (argv_split[i])
 	{
-		if (!ft_isnbr(split[i]))
+		if (!ft_isnbr(argv_split[i]))
 			exit_error("Error");
-		tmp = ft_atoi(split[i]);
+		tmp = ft_atoi(argv_split[i]);
 		if (tmp > INT_MAX || tmp < INT_MIN)
 			exit_error("Error");
 		if (is_dup(data->stack_a, tmp))
