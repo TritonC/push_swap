@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/15 08:04:37 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/15 08:18:52 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	read_stack(t_pushswap *data, char **argv)
 		ft_lstadd_back(&data->stack_a, ft_lstnew(nbr));
 		i++;
 	}
+	ft_memfree((void **)argv_split, NULL);
 	data->length = i;
 	index_stack(data);
 }

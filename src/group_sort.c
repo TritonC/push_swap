@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 09:09:54 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/15 08:05:46 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ int	group_check(t_list *stack, int group_id)
 void	group_sort(t_pushswap *data)
 {
 	int		id;
-	int		lst_size;
 
 	id = 1;
-	lst_size = ft_lstsize(data->stack_b);
 	while (data->stack_a)
 	{
 		while (group_check(data->stack_a, id))

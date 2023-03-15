@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:58:17 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 10:15:46 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/15 08:17:11 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int			ft_tolower(int n);
 char		*ft_strchr(const char *str, int ch);
 char		*ft_strrchr(const char *str, int ch);
 void		*ft_memchr(const void *str, int ch, size_t n);
+void		ft_memfree(void **double_pointer, void *simple_pointer);
 int			ft_memcmp(const void *str1, const void *str2, size_t n);
 char		*ft_strnstr(const char *str, const char *to_find, size_t len);
 int			ft_atoi(const char *str);
