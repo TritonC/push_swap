@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/22 09:50:26 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:20:40 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	index_stack(t_pushswap *data)
 void	read_stack(t_pushswap *data, char **argv)
 {
 	int			i;
-	int			tmp;
+	long long	tmp;
 	t_nbr		*nbr;
 	char		**argv_split;
 
@@ -82,7 +82,7 @@ void	read_stack(t_pushswap *data, char **argv)
 	{
 		if (!ft_isnbr(argv_split[i]))
 			exit_error("Error");
-		tmp = ft_atoi(argv_split[i]);
+		tmp = ft_atoll(argv_split[i]);
 		if (tmp > INT_MAX || tmp < INT_MIN)
 			exit_error("Error");
 		if (is_dup(data->stack_a, tmp))

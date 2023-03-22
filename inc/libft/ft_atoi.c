@@ -6,15 +6,15 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:13:33 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/02/15 12:37:37 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/22 11:14:10 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned long int	ft_nbr(char *str)
+static long int	ft_nbr(char *str)
 {
-	unsigned long int	j;
+	long int			j;
 	int					i;
 
 	j = 0;
