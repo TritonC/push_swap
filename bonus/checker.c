@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 05:40:14 by cthien-h          #+#    #+#             */
-/*   Updated: 2023/03/13 13:42:32 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/22 09:48:11 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	data.stack_b = NULL;
 	read_stack(&data, argv);
 	line = get_next_line(STDIN_FILENO);
-	while (line != NULL && !is_sorted(data.stack_a))
+	while (line != NULL)
 	{
 		if (!is_operator(line))
 			exit_error("Error");
