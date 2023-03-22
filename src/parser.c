@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/15 08:18:08 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/22 09:50:26 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	read_stack(t_pushswap *data, char **argv)
 	t_nbr		*nbr;
 	char		**argv_split;
 
-	i = 0;
+	i = -1;
 	argv_split = split_argv(argv);
-	while (argv_split[i])
+	while (argv_split[++i])
 	{
 		if (!ft_isnbr(argv_split[i]))
 			exit_error("Error");
@@ -91,7 +91,6 @@ void	read_stack(t_pushswap *data, char **argv)
 		nbr->nbr = tmp;
 		init_nbr(nbr);
 		ft_lstadd_back(&data->stack_a, ft_lstnew(nbr));
-		i++;
 	}
 	ft_memfree((void **)argv_split, NULL);
 	data->length = i;
