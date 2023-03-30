@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/13 13:37:27 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:05:02 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	stack_operation(t_pushswap *data, char *operation, int print_operation);
 
 void	radix_binary_sort(t_pushswap *data);
 void	small_sort(t_pushswap *data);
+void	sort(t_pushswap *data);
 void	cost_assign(t_pushswap *data);
 void	print_this(t_list *stack);
 void	sort_3(t_pushswap *data);

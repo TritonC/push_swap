@@ -6,7 +6,7 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 12:33:25 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/03/30 15:04:34 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,26 @@ void	do_op(t_pushswap *data, char *str, int i, int op)
 {
 	(void)op;
 	stack_operation(data, str, i);
+}
+
+void	sort(t_pushswap *data)
+{
+	int	max_idx;
+	t_list	*tmp;
+
+	tmp = data->stack_a;
+	max_idx = INT_MIN;
+	while (tmp)
+	{
+		if (max_idx < ((t_nbr *)tmp->content)->idx)
+			max_idx = ((t_nbr *)tmp->content)->idx;
+		tmp = tmp->next;
+	}
+	if (((t_nbr *)data->stack_a->content)->idx == max_idx)
+		stack_operation(data, OP_RA, 1);
+	else if (((t_nbr *)data->stack_a->next->content)->idx == max_idx)
+		stack_operation(data, OP_RRA, 1);
+	if (((t_nbr *)data->stack_a->content)->idx
+		> ((t_nbr *)data->stack_a->next->content)->idx)
+		stack_operation(data, OP_SA, 1);
 }
