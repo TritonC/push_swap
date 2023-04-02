@@ -6,12 +6,13 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:25:16 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/30 09:54:11 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/04/02 12:56:00 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* this definde the size of the chunks basing on the length of the stack */
 void	define_group_size(t_pushswap *data)
 {
 	if (data->length < 3)
@@ -22,6 +23,7 @@ void	define_group_size(t_pushswap *data)
 		data->group_size = data->length / 7;
 }
 
+/*init the struct t_nbr */
 void	init_nbr(t_nbr *nbr)
 {
 	nbr->idx = -1;
@@ -31,6 +33,7 @@ void	init_nbr(t_nbr *nbr)
 	nbr->cost = 0;
 }
 
+/*function that iterates the stack_a to find the lowest number and its index */
 void	lst_iter(t_list **lst, t_list **min_lst, int min)
 {
 	while ((*lst))
@@ -45,6 +48,7 @@ void	lst_iter(t_list **lst, t_list **min_lst, int min)
 	}
 }
 
+/*function to index the stack and the id group of each node */
 static void	index_stack(t_pushswap *data)
 {
 	int		i;
@@ -69,6 +73,7 @@ static void	index_stack(t_pushswap *data)
 	}
 }
 
+/*function that parse the input, check if is a number and if is a duplicate */
 void	read_stack(t_pushswap *data, char **argv)
 {
 	int			i;

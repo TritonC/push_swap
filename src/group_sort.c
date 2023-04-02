@@ -6,12 +6,13 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:10 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/30 15:05:13 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/04/02 12:48:15 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*function to check if all the nodes in the stack_a have been sorted*/
 int	group_check(t_list *stack, int group_id)
 {
 	t_list	*tmp;

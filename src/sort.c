@@ -6,12 +6,13 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:46:05 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/30 15:04:34 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/04/02 12:56:56 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*function to sort the stack_a when the stack_a has 3 nodes*/
 void	sort_3(t_pushswap *data)
 {
 	if (((t_nbr *)data->stack_a->content)->idx == data->length - 1)
@@ -23,6 +24,7 @@ void	sort_3(t_pushswap *data)
 		stack_operation(data, OP_SA, 1);
 }
 
+/*this function rotate the smallest number to the top of the stack_a*/
 static void	rotate_smallest_to_top(t_pushswap *data)
 {
 	int		smallest_num_idx;
@@ -48,6 +50,7 @@ static void	rotate_smallest_to_top(t_pushswap *data)
 	}
 }
 
+/*call the previous functions to sort the stack_a*/
 void	small_sort(t_pushswap *data)
 {
 	while (ft_lstsize(data->stack_a) > 3)

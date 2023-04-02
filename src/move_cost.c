@@ -6,11 +6,13 @@
 /*   By: mluis-fu <mluis-fu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:58:27 by mluis-fu          #+#    #+#             */
-/*   Updated: 2023/03/11 09:16:12 by mluis-fu         ###   ########.fr       */
+/*   Updated: 2023/04/02 12:53:48 by mluis-fu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*function to calculate the cost of moving the node from stack_b to stack_a*/
 
 static void	cost_evaluate(t_pushswap *data)
 {
@@ -37,6 +39,7 @@ static void	cost_evaluate(t_pushswap *data)
 	}
 }
 
+/*function to get the node with the highest index*/
 t_list	*max_node(t_pushswap *data)
 {
 	t_list	*head;
@@ -47,6 +50,8 @@ t_list	*max_node(t_pushswap *data)
 	((t_nbr *)(head->content))->move.cost_a = 0;
 	return (head);
 }
+
+/*function to get the node with lower cost*/
 
 t_list	*best_move(t_pushswap *data)
 {
@@ -68,7 +73,8 @@ t_list	*best_move(t_pushswap *data)
 	return (head_b);
 }
 
-void	final2(t_pushswap *data)
+/*function that execute the movement of the node with lower cost*/
+void	final(t_pushswap *data)
 {
 	t_list	*to_move;
 	int		move_a;
@@ -93,6 +99,7 @@ void	final2(t_pushswap *data)
 	cost_assign(data);
 }
 
+/*function that execute all the prevoius functions*/
 void	final_sort(t_pushswap *data)
 {
 	group_sort(data);
