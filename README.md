@@ -11,13 +11,11 @@ consists in the sorting of a series of numbers received by parameters
 
 \## 🛠️ Open and Execute
 
-**do make rule "$>make" **
-
-**an executable named push_swap will appear**
+**do make rule $>make**
 
 **./push_swap [args]**
 
-ejm = ./push_swap 3 2 1
+**./push_swap 3 2 1**
 
 Movements allowed:
 
