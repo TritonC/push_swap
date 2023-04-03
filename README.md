@@ -2,11 +2,12 @@
 
 https://user-images.githubusercontent.com/105948301/229530224-801c9ecb-add8-4bf8-8ce0-cbde34ac64e4.mov
 
-\## 📁 Access the project
+
+## 📁 Access the project
 
 **Git clone the repository, all the source code is found in the src directory**
 
-\## 🛠️ Open and Execute
+## 🛠️ Open and Execute
 
 **do make rule $>make**
 
