@@ -33,10 +33,15 @@ it that can't be executed won't.
 | `rrb` | reverse rotate b                    | shifts all elements of stack b from top to bottom      |
 | `rrr` | reverse rotate a + reverse rotate b | both `rra` and `rrb`                                   |
 
+### Performance of the Algorithm
 
-## :hammer:Funcionalidades del proyecto
+My push_swap sorts
 
-- `functionality`: sorting algorithm using a series of specific moves
+    3 numbers with maximum 3 instructions,
+    4 numbers with maximum 7 instructions,
+    5 numbers with maximum 11 instructions,
+    100 numbers with maximum 690 instructions => 5 points,
+    500 numbers with maximum 4800 instructions => 5 points.
 
 The library includes the functions of the following projects:
 - [Libft](https://github.com/Tritonc/Libft)
