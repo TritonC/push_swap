@@ -16,3 +16,23 @@ Movements allowed:
 ## :hammer:Funcionalidades del proyecto
 
 - `functionality`: sorting algorithm using a series of specific moves
+
+The library includes the functions of the following projects:
+- [Libft](https://github.com/Tritonc/Libft)
+
+```
+$ make
+```
+The **make** rule will compile the whole library generating a static library 'libft.a' containing all the functions of the project.
+```
+$ make clean
+```
+The **clean** rule will delete all objects created to compile the library 'libft.a'.
+```
+$ make fclean
+```
+The **fclean** rule will delete all created objects and the 'libft.a' file that has been previously compiled.
+```
+$ make re
+```
+The **re** rule will remove all compiled objects and files (if any) and recompile the library.
