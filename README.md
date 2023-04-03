@@ -1,7 +1,6 @@
 <h1 align="center"> PUSH_SWAP </h1>
 
-https://user-images.githubusercontent.com/105948301/229530224-801c9ecb-add8-4bf8-8ce0-cbde34ac64e4.mov
-
+https://user-images.githubusercontent.com/105948301/229555399-204c1259-b3b0-48b0-9383-b872f0b0858d.mov
 
 ## 📁 Access the project
 
