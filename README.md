@@ -2,9 +2,6 @@
 
 https://user-images.githubusercontent.com/105948301/229530224-801c9ecb-add8-4bf8-8ce0-cbde34ac64e4.mov
 
-consists in the sorting of a series of numbers received by parameters
-![image](https://user-images.githubusercontent.com/105948301/229532083-5904eb0b-57c2-487f-ac6a-2bd5077cd99d.png)
-
 \## 📁 Access the project
 
 **Git clone the repository, all the source code is found in the src directory**
